@@ -1,0 +1,18 @@
+osx_image: xcode9
+language: objective-c
+cache:
+  - bundler
+  - cocoapods
+branches:
+  only:
+    - develop
+    - master
+notifications:
+  email: false
+before_install:
+  - gem install bundler
+  - brew update
+  - bundle install && brew bundle
+install: bundle exec pod install --repo-update --silent
+script: bundle exec fastlane run_tests
+after_success: bundle exec fastlane ci_framework_deploy
