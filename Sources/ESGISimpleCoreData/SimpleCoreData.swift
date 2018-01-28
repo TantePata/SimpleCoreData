@@ -17,9 +17,14 @@ open class SimpleCoreData {
         self.context = context
     }
     
-    func delete(entity: NSManagedObject) /*-> Bool*/ {
-        context.delete(entity)
-        // TODO verify that the deletion happened and return the result
+    func delete(entity: NSManagedObject) -> Bool {
+        do {
+            context.delete(entity)
+            try context.save()
+            return entity.isDeleted && entity.hasPersistentChangedValues
+        } catch {
+            return false
+        }
     }
     
     func getAll(entityClass: NSManagedObject.Type) throws -> [NSManagedObject]? {
