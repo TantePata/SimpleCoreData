@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+
 open class SimpleCoreData {
     var context: NSManagedObjectContext
     
@@ -21,10 +22,16 @@ open class SimpleCoreData {
         // TODO verify that the deletion happened and return the result
     }
     
-    func getAll(entityClass: NSManagedObject) -> [NSManagedObject] {
-        //context.fetch()
+    func getAll(entityClass: NSManagedObject.Type) throws -> [NSManagedObject]? {
+        if #available(iOS 10.0, *) {
+            return try context.fetch(entityClass.fetchRequest()) as? [NSManagedObject]
+        } else {
+            // TODO find another way
+            NSLog("getAll() not available for iOS <= 10")
+            return nil
+        }
     }
-    
+    /*
     func getById(entityDescr: NSEntityDescription) -> NSManagedObject {
         <#function body#>
     }
@@ -35,5 +42,5 @@ open class SimpleCoreData {
     
     func modify(entityDescr: NSEntityDescription) -> Bool {
         return false
-    }
+    }*/
 }
