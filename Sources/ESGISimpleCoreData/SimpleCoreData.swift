@@ -8,55 +8,65 @@
 
 import Foundation
 import CoreData
-
+import UIKit
 
 open class SimpleCoreData {
-    var context: NSManagedObjectContext
+    private static let sharedInstance = SimpleCoreData()
+    public var context: NSManagedObjectContext?
     
-    init(context: NSManagedObjectContext) {
-        self.context = context
-    }
+    private init() {}
     
-    func delete(entity: NSManagedObject) -> Bool {
+    
+    func delete(entity: NSManagedObject) throws -> Bool {
+        guard let context = context else {
+            throw NSError()
+        }
         do {
             context.delete(entity)
             try context.save()
             return entity.isDeleted && entity.hasPersistentChangedValues
         } catch {
+            print("In SimpleCoreData:delete() : \(error)")
             return false
         }
     }
     
     func getAll(entityClass: NSManagedObject.Type) throws -> [NSManagedObject]? {
+        guard let context = context else {
+            throw NSError()
+        }
         if #available(iOS 10.0, *) {
             return try context.fetch(entityClass.fetchRequest()) as? [NSManagedObject]
         } else {
             // TODO find another way or throw a proper error
-            NSLog("getAll() not available for iOS <= 10")
+            print("getAll() not available for iOS <= 10")
             return nil
         }
     }
     
-    func create(entityDescr: NSManagedObject.Type) -> NSManagedObject? {
+    func create(entityDescr: NSManagedObject.Type) throws -> NSManagedObject? {
+        guard let context = context else {
+            throw NSError()
+        }
         if #available(iOS 10.0, *) {
             do {
                 let entity = entityDescr.init(context: context)
                 try context.save()
                 return entity
             } catch {
-                NSLog("error on create()")
+                print("In SimpleCoreData:create() : \(error)")
                 return nil
             }
         } else {
             // TODO find another way or throw a proper error
-            NSLog("create() not available for iOS <= 10")
+            print("create() not available for iOS <= 10")
             return nil
         }
     }
     
     /*
-    func getById(entityDescr: NSEntityDescription) -> NSManagedObject {
-        <#function body#>
+    func getById(entityDescr: NSEntityDescription) -> NSManagedObject? {
+        return nil
     }
     */
     
@@ -65,3 +75,4 @@ open class SimpleCoreData {
         return false
     }*/
 }
+
