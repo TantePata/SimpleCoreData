@@ -11,13 +11,13 @@ import CoreData
 import UIKit
 
 open class SimpleCoreData {
-    private static let sharedInstance = SimpleCoreData()
-    public var context: NSManagedObjectContext?
+    //static let sharedInstance = SimpleCoreData()
+    static var context: NSManagedObjectContext?
     
     private init() {}
     
     
-    func delete(entity: NSManagedObject) throws -> Bool {
+    class func delete(entity: NSManagedObject) throws -> Bool {
         guard let context = context else {
             throw NSError()
         }
@@ -31,7 +31,7 @@ open class SimpleCoreData {
         }
     }
     
-    func getAll(entityClass: NSManagedObject.Type) throws -> [NSManagedObject]? {
+    class func getAll(entityClass: NSManagedObject.Type) throws -> [NSManagedObject]? {
         guard let context = context else {
             throw NSError()
         }
@@ -44,7 +44,7 @@ open class SimpleCoreData {
         }
     }
     
-    func create(entityDescr: NSManagedObject.Type) throws -> NSManagedObject? {
+    class func create(entityDescr: NSManagedObject.Type) throws -> NSManagedObject? {
         guard let context = context else {
             throw NSError()
         }
@@ -75,4 +75,3 @@ open class SimpleCoreData {
         return false
     }*/
 }
-
