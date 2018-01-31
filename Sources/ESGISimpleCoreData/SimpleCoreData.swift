@@ -11,7 +11,6 @@ import CoreData
 import UIKit
 
 open class SimpleCoreData {
-    //static let sharedInstance = SimpleCoreData()
     static var context: NSManagedObjectContext?
     
     private init() {}
