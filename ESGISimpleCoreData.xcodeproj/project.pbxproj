@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		485E68DAEBB5106FD57CE01E /* Pods_Frameworks_ESGISimpleCoreData_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B4AAF9173CA57E899FC0DD /* Pods_Frameworks_ESGISimpleCoreData_iOS.framework */; };
+		82225CA42023C3C6000BAC42 /* SimpleCoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82225CA32023C3C6000BAC42 /* SimpleCoreDataError.swift */; };
 		8263BC5E201D22D40093DDB7 /* SimpleCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8263BC5D201D22D40093DDB7 /* SimpleCoreData.swift */; };
 		A3169DBA1DE05E8300BABAFD /* ESGISimpleCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3169DB01DE05E8300BABAFD /* ESGISimpleCoreData.framework */; };
 		A370DEBF1FB0995C000FEDED /* ESGISimpleCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = A370DEBA1FB0995C000FEDED /* ESGISimpleCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		55B2B789FC5A6E4D423937C5 /* Pods-Tests-ESGISimpleCoreDataTests-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-ESGISimpleCoreDataTests-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests-ESGISimpleCoreDataTests-iOS/Pods-Tests-ESGISimpleCoreDataTests-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		82225CA32023C3C6000BAC42 /* SimpleCoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCoreDataError.swift; sourceTree = "<group>"; };
 		8263BC5D201D22D40093DDB7 /* SimpleCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCoreData.swift; sourceTree = "<group>"; };
 		A3169DB01DE05E8300BABAFD /* ESGISimpleCoreData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESGISimpleCoreData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3169DB91DE05E8300BABAFD /* ESGISimpleCoreDataTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ESGISimpleCoreDataTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +137,7 @@
 			children = (
 				A370DEBA1FB0995C000FEDED /* ESGISimpleCoreData.h */,
 				8263BC5D201D22D40093DDB7 /* SimpleCoreData.swift */,
+				82225CA32023C3C6000BAC42 /* SimpleCoreDataError.swift */,
 			);
 			path = ESGISimpleCoreData;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8263BC5E201D22D40093DDB7 /* SimpleCoreData.swift in Sources */,
+				82225CA42023C3C6000BAC42 /* SimpleCoreDataError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

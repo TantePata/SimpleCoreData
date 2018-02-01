@@ -18,7 +18,7 @@ open class SimpleCoreData {
     
     class func delete(entity: NSManagedObject) throws -> Bool {
         guard let context = context else {
-            throw NSError()
+            throw SimpleCoreDataError.contextNotInitialized
         }
         do {
             context.delete(entity)
@@ -32,7 +32,7 @@ open class SimpleCoreData {
     
     class func getAll(entityClass: NSManagedObject.Type) throws -> [NSManagedObject]? {
         guard let context = context else {
-            throw NSError()
+            throw SimpleCoreDataError.contextNotInitialized
         }
         if #available(iOS 10.0, *) {
             return try context.fetch(entityClass.fetchRequest()) as? [NSManagedObject]
@@ -45,7 +45,7 @@ open class SimpleCoreData {
     
     class func create(entityDescr: NSManagedObject.Type) throws -> NSManagedObject? {
         guard let context = context else {
-            throw NSError()
+            throw SimpleCoreDataError.contextNotInitialized
         }
         if #available(iOS 10.0, *) {
             do {
