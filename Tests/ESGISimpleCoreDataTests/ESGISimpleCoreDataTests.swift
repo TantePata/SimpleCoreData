@@ -14,7 +14,8 @@ class ESGISimpleCoreDataTests: XCTestCase {
 
     // Simple CoreData test cover : 17%
     func testDidNotSetContext() {
-        let dummy = NSManagedObject()
+        let dummy = createDummyObject()
+
         XCTAssertThrowsError(try SimpleCoreData.create(entityDescr: NSManagedObject.self)) { (error) -> Void in
             XCTAssertEqual(error as? SimpleCoreDataError, SimpleCoreDataError.contextNotInitialized)
         }
@@ -24,5 +25,13 @@ class ESGISimpleCoreDataTests: XCTestCase {
         XCTAssertThrowsError(try SimpleCoreData.delete(entity: dummy)) { (error) -> Void in
             XCTAssertEqual(error as? SimpleCoreDataError, SimpleCoreDataError.contextNotInitialized)
         }
+    }
+    
+    // UTILS
+    
+    func createDummyObject() -> NSManagedObject {
+        let dummyDescr = NSEntityDescription()
+        dummyDescr.name = "dummy"
+        return NSManagedObject(entity: dummyDescr, insertInto: nil)
     }
 }
