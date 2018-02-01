@@ -1,4 +1,5 @@
 import XCTest
+import CoreData
 @testable import ESGISimpleCoreData
 
 class ESGISimpleCoreDataTests: XCTestCase {
@@ -11,8 +12,12 @@ class ESGISimpleCoreDataTests: XCTestCase {
         super.tearDown()
     }
 
-    func testDescription() {
-        let t = TemplateClass()
-        XCTAssertEqual(t.description, "TemplateDescription")
+    // Simple CoreData test cover : 17%
+    // TODO create a dedicated error class
+    func testDidNotSetContext() {
+        let dummy = NSManagedObject()
+        XCTAssertThrowsError(try SimpleCoreData.create(entityDescr: NSManagedObject.self))
+        XCTAssertThrowsError(try SimpleCoreData.getAll(entityClass: NSManagedObject.self))
+        XCTAssertThrowsError(try SimpleCoreData.delete(entity: dummy))
     }
 }
