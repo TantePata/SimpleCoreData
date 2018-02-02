@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4BC6868BA8832E8A083E9ECE /* Pods_Samples_ESGISimpleCoreDataSample_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8971F06C0506E7C4223846C3 /* Pods_Samples_ESGISimpleCoreDataSample_iOS.framework */; };
+		82F22B9B2024B1D900AF8F17 /* ESGISimpleCoreDataSample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82F22B992024B1D900AF8F17 /* ESGISimpleCoreDataSample.xcdatamodeld */; };
 		A30D63F21E0D717E00A3CE45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30D63F11E0D717E00A3CE45 /* AppDelegate.swift */; };
 		A30D63F91E0D717E00A3CE45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A30D63F81E0D717E00A3CE45 /* Assets.xcassets */; };
 		A30D63FC1E0D717E00A3CE45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A30D63FA1E0D717E00A3CE45 /* LaunchScreen.storyboard */; };
@@ -36,6 +37,7 @@
 		437CB24F88DE489FD8141488 /* Pods-Samples-ESGISimpleCoreDataSample-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Samples-ESGISimpleCoreDataSample-iOS.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-Samples-ESGISimpleCoreDataSample-iOS/Pods-Samples-ESGISimpleCoreDataSample-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		444C2E3A94BE72ECE95421F5 /* Pods-Samples-ESGISimpleCoreDataSample-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Samples-ESGISimpleCoreDataSample-iOS.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-Samples-ESGISimpleCoreDataSample-iOS/Pods-Samples-ESGISimpleCoreDataSample-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		465646586A414E17162D185D /* Pods-ESGISimpleCoreDataSample-ESGISimpleCoreDataSample-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ESGISimpleCoreDataSample-ESGISimpleCoreDataSample-iOS.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-ESGISimpleCoreDataSample-ESGISimpleCoreDataSample-iOS/Pods-ESGISimpleCoreDataSample-ESGISimpleCoreDataSample-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		82F22B9A2024B1D900AF8F17 /* ESGISimpleCoreDataSample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ESGISimpleCoreDataSample.xcdatamodel; sourceTree = "<group>"; };
 		846FE99F4361DD69C14E72CB /* Pods_ESGISimpleCoreDataSample_ESGISimpleCoreDataSample_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ESGISimpleCoreDataSample_ESGISimpleCoreDataSample_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8971F06C0506E7C4223846C3 /* Pods_Samples_ESGISimpleCoreDataSample_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Samples_ESGISimpleCoreDataSample_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A30D63EE1E0D717E00A3CE45 /* ESGISimpleCoreDataSample-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ESGISimpleCoreDataSample-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				A30D63F11E0D717E00A3CE45 /* AppDelegate.swift */,
+				82F22B992024B1D900AF8F17 /* ESGISimpleCoreDataSample.xcdatamodeld */,
 				A30D640D1E0D73B300A3CE45 /* ViewController.swift */,
 				A30D640E1E0D73B300A3CE45 /* ViewController.xib */,
 				A30D63F81E0D717E00A3CE45 /* Assets.xcassets */,
@@ -243,6 +246,7 @@
 			files = (
 				A30D640F1E0D73B300A3CE45 /* ViewController.swift in Sources */,
 				A30D63F21E0D717E00A3CE45 /* AppDelegate.swift in Sources */,
+				82F22B9B2024B1D900AF8F17 /* ESGISimpleCoreDataSample.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +423,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		82F22B992024B1D900AF8F17 /* ESGISimpleCoreDataSample.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				82F22B9A2024B1D900AF8F17 /* ESGISimpleCoreDataSample.xcdatamodel */,
+			);
+			currentVersion = 82F22B9A2024B1D900AF8F17 /* ESGISimpleCoreDataSample.xcdatamodel */;
+			path = ESGISimpleCoreDataSample.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A30D63E61E0D717E00A3CE45 /* Project object */;
 }
