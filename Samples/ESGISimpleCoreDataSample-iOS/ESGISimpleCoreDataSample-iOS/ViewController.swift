@@ -13,5 +13,16 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        do {
+            let customer = try SimpleCoreData.create(entityDescr: Customer.self)
+            let customers = try SimpleCoreData.getAll(entityClass: Customer.self)
+            print(customers)
+            let suppressed = try SimpleCoreData.delete(entity: customer!)
+            print("OK")
+        } catch {
+            print("\(error)")
+        }
+        
     }
 }
