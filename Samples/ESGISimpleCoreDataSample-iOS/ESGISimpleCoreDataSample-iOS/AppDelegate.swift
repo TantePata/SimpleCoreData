@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ESGISimpleCoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

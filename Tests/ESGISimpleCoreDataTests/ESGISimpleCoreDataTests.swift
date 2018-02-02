@@ -26,9 +26,9 @@ class ESGISimpleCoreDataTests: XCTestCase {
             XCTAssertEqual(error as? SimpleCoreDataError, SimpleCoreDataError.contextNotInitialized)
         }
     }
-    
+
     // UTILS
-    
+
     func createDummyObject() -> NSManagedObject {
         let dummyDescr = NSEntityDescription()
         dummyDescr.name = "dummy"
