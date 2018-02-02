@@ -11,12 +11,12 @@ import CoreData
 import UIKit
 
 open class SimpleCoreData {
-    static var context: NSManagedObjectContext?
+    
+    open static var context: NSManagedObjectContext?
     
     private init() {}
     
-    
-    class func delete(entity: NSManagedObject) throws -> Bool {
+    open class func delete(entity: NSManagedObject) throws -> Bool {
         guard let context = context else {
             throw SimpleCoreDataError.contextNotInitialized
         }
@@ -30,7 +30,7 @@ open class SimpleCoreData {
         }
     }
     
-    class func getAll(entityClass: NSManagedObject.Type) throws -> [NSManagedObject]? {
+    open class func getAll(entityClass: NSManagedObject.Type) throws -> [NSManagedObject]? {
         guard let context = context else {
             throw SimpleCoreDataError.contextNotInitialized
         }
@@ -43,7 +43,7 @@ open class SimpleCoreData {
         }
     }
     
-    class func create(entityDescr: NSManagedObject.Type) throws -> NSManagedObject? {
+    open class func create(entityDescr: NSManagedObject.Type) throws -> NSManagedObject? {
         guard let context = context else {
             throw SimpleCoreDataError.contextNotInitialized
         }
