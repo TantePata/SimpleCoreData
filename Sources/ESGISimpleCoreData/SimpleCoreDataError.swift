@@ -10,4 +10,5 @@ import Foundation
 
 enum SimpleCoreDataError: Error {
     case contextNotInitialized
+    case undefinedContainer
 }

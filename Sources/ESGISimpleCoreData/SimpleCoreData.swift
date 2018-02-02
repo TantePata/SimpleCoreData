@@ -10,19 +10,71 @@ import Foundation
 import CoreData
 import UIKit
 
+// code usually generated in AppDelegate
+@available(iOS 10.0, *)
 open class SimpleCoreData {
-    
-    open static var context: NSManagedObjectContext?
     
     private init() {}
     
+    open static var persistentContainer: NSPersistentContainer?
+    
+    open static func loadContainer (_name withName: String)  {
+        /*
+         The persistent container for the application. This implementation
+         creates and returns a container, having loaded the store for the
+         application to it. This property is optional since there are legitimate
+         error conditions that could cause the creation of the store to fail.
+         */
+        let container = NSPersistentContainer(name: withName)
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                
+                /*
+                 Typical reasons for an error here include:
+                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                 * The device is out of space.
+                 * The store could not be migrated to the current model version.
+                 Check the error message to determine what the actual problem was.
+                 */
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        self.persistentContainer = container
+    }
+
+    open class func saveContext () throws {
+        guard let container = persistentContainer else {
+            throw SimpleCoreDataError.undefinedContainer
+        }
+        let context = container.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+}
+
+
+// simplified method
+@available(iOS 10.0, *)
+extension SimpleCoreData {
+
     open class func delete(entity: NSManagedObject) throws -> Bool {
-        guard let context = context else {
-            throw SimpleCoreDataError.contextNotInitialized
+        guard let container = persistentContainer else {
+            throw SimpleCoreDataError.undefinedContainer
         }
         do {
-            context.delete(entity)
-            try context.save()
+            container.viewContext.delete(entity)
+            try container.viewContext.save()
             return entity.isDeleted && entity.hasPersistentChangedValues
         } catch {
             print("In SimpleCoreData:delete() : \(error)")
@@ -31,34 +83,22 @@ open class SimpleCoreData {
     }
     
     open class func getAll(entityClass: NSManagedObject.Type) throws -> [NSManagedObject]? {
-        guard let context = context else {
-            throw SimpleCoreDataError.contextNotInitialized
+        guard let container = persistentContainer else {
+            throw SimpleCoreDataError.undefinedContainer
         }
-        if #available(iOS 10.0, *) {
-            return try context.fetch(entityClass.fetchRequest()) as? [NSManagedObject]
-        } else {
-            // TODO find another way or throw a proper error
-            print("getAll() not available for iOS <= 10")
-            return nil
-        }
+        return try container.viewContext.fetch(entityClass.fetchRequest()) as? [NSManagedObject]
     }
     
     open class func create(entityDescr: NSManagedObject.Type) throws -> NSManagedObject? {
-        guard let context = context else {
-            throw SimpleCoreDataError.contextNotInitialized
+        guard let container = persistentContainer else {
+            throw SimpleCoreDataError.undefinedContainer
         }
-        if #available(iOS 10.0, *) {
-            do {
-                let entity = entityDescr.init(context: context)
-                try context.save()
-                return entity
-            } catch {
-                print("In SimpleCoreData:create() : \(error)")
-                return nil
-            }
-        } else {
-            // TODO find another way or throw a proper error
-            print("create() not available for iOS <= 10")
+        do {
+            let entity = entityDescr.init(context: container.viewContext)
+            try container.viewContext.save()
+            return entity
+        } catch {
+            print("In SimpleCoreData:create() : \(error)")
             return nil
         }
     }
@@ -68,7 +108,7 @@ open class SimpleCoreData {
         return nil
     }
     */
-    
+        
     /*
     func modify(entityDescr: NSEntityDescription) -> Bool {
         return false
