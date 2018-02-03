@@ -50,6 +50,7 @@ open class SimpleCoreData {
         let context = container.viewContext
         if context.hasChanges {
             do {
+                print("Saving.")
                 try context.save()
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
@@ -57,6 +58,8 @@ open class SimpleCoreData {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
+        } else {
+            print("No changes detected.")
         }
     }
 }
@@ -91,6 +94,7 @@ extension SimpleCoreData {
             throw SimpleCoreDataError.undefinedContainer
         }
         do {
+            print("Saving ...")
             let entity = entityDescr.init(context: container.viewContext)
             try saveContext()
             return entity

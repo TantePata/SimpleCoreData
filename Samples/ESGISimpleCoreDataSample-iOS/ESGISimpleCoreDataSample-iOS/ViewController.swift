@@ -18,12 +18,14 @@ class ViewController: UIViewController {
             let customer = try SimpleCoreData.create(entityDescr: Customer.self)
             let customers = try SimpleCoreData.getAll(entityClass: Customer.self)
             print(customers as Any)
+            /*
             let suppressed = try SimpleCoreData.delete(entity: customer!)
             if suppressed {
                 print("Suppressed!")
             } else {
                 print("Not suppressed ...")
             }
+ */
             print("OK")
         } catch {
             print("\(error)")
