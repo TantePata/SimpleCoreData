@@ -27,9 +27,9 @@ class ESGISimpleCoreDataTests: XCTestCase {
             XCTAssertEqual(error as? SimpleCoreDataError, SimpleCoreDataError.undefinedContainer)
         }
     }
-    
+
     // UTILS
-    
+
     func createDummyObject() -> NSManagedObject {
         let dummyDescr = NSEntityDescription()
         dummyDescr.name = "dummy"

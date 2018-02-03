@@ -13,12 +13,10 @@ import UIKit
 // code usually generated in AppDelegate
 @available(iOS 10.0, *)
 open class SimpleCoreData {
-    
+
     private init() {}
-    
     open static var persistentContainer: NSPersistentContainer?
-    
-    open static func loadContainer (_name withName: String)  {
+    open static func loadContainer (_name withName: String) {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
@@ -30,7 +28,7 @@ open class SimpleCoreData {
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
+
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -63,7 +61,6 @@ open class SimpleCoreData {
     }
 }
 
-
 // simplified method
 @available(iOS 10.0, *)
 extension SimpleCoreData {
@@ -81,14 +78,14 @@ extension SimpleCoreData {
             return false
         }
     }
-    
+
     open class func getAll(entityClass: NSManagedObject.Type) throws -> [NSManagedObject]? {
         guard let container = persistentContainer else {
             throw SimpleCoreDataError.undefinedContainer
         }
         return try container.viewContext.fetch(entityClass.fetchRequest()) as? [NSManagedObject]
     }
-    
+
     open class func create(entityDescr: NSManagedObject.Type) throws -> NSManagedObject? {
         guard let container = persistentContainer else {
             throw SimpleCoreDataError.undefinedContainer
@@ -102,13 +99,11 @@ extension SimpleCoreData {
             return nil
         }
     }
-    
     /*
     func getById(entityDescr: NSEntityDescription) -> NSManagedObject? {
         return nil
     }
     */
-        
     /*
     func modify(entityDescr: NSEntityDescription) -> Bool {
         return false
