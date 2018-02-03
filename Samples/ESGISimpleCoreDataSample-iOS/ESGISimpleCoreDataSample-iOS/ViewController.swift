@@ -2,27 +2,31 @@
 //  ViewController.swift
 //  ESGISimpleCoreDataSample-iOS
 //
-//  Created by Benoit BRIATTE on 23/12/2016.
-//  Copyright © 2016 Digipolitan. All rights reserved.
+//  Created by Caroline Chaudey on 02/02/2018.
+//  Copyright © 2018 LittlePoneyInc. All rights reserved.
 //
 
 import UIKit
 import ESGISimpleCoreData
 
+@available(iOS 10.0, *)
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         do {
             let customer = try SimpleCoreData.create(entityDescr: Customer.self)
             let customers = try SimpleCoreData.getAll(entityClass: Customer.self)
-            print(customers)
+            print(customers as Any)
             let suppressed = try SimpleCoreData.delete(entity: customer!)
+            if suppressed {
+                print("Suppressed!")
+            } else {
+                print("Not suppressed ...")
+            }
             print("OK")
         } catch {
             print("\(error)")
         }
-        
     }
 }
