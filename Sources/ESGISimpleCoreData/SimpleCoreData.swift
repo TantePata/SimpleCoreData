@@ -64,21 +64,20 @@ open class SimpleCoreData {
     }
 }
 
-// simplified method
+// simplified methods
 @available(iOS 10.0, *)
 extension SimpleCoreData {
 
-    open class func delete(entity: NSManagedObject) throws -> Bool {
+    open class func delete(entity: NSManagedObject) throws {
         guard let container = persistentContainer else {
             throw SimpleCoreDataError.undefinedContainer
         }
         do {
+            print("Deleting ...")
             container.viewContext.delete(entity)
             try saveContext()
-            return entity.isDeleted && entity.hasPersistentChangedValues
         } catch {
             print("In SimpleCoreData:delete() : \(error)")
-            return false
         }
     }
 
