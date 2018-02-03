@@ -224,7 +224,7 @@
 					};
 					A3169DB81DE05E8300BABAFD = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 582762VK3P;
+						DevelopmentTeam = VES49Q9L83;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -552,8 +552,9 @@
 			baseConfigurationReference = 55B2B789FC5A6E4D423937C5 /* Pods-Tests-ESGISimpleCoreDataTests-iOS.debug.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 582762VK3P;
+				DEVELOPMENT_TEAM = VES49Q9L83;
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.digipolitan.ESGISimpleCoreDataTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -565,8 +566,9 @@
 			baseConfigurationReference = BCAC929787FE7E73047CA368 /* Pods-Tests-ESGISimpleCoreDataTests-iOS.release.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 582762VK3P;
+				DEVELOPMENT_TEAM = VES49Q9L83;
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.digipolitan.ESGISimpleCoreDataTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
