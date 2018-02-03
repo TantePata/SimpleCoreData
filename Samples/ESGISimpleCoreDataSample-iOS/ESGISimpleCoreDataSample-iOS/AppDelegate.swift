@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = UINavigationController(rootViewController: ViewController())
         self.window = window
-        SimpleCoreData.loadContainer(_name: "ESGISimpleCoreDataSample")
+        SimpleCoreData.loadContainer(name: "ESGISimpleCoreDataSample")
         window.makeKeyAndVisible()
         return true
     }
