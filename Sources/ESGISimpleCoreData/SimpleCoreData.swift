@@ -16,14 +16,14 @@ open class SimpleCoreData {
 
     private init() {}
     open static var persistentContainer: NSPersistentContainer?
-    open static func loadContainer (_name withName: String) {
+    open static func loadContainer (name: String) {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
          */
-        let container = NSPersistentContainer(name: withName)
+        let container = NSPersistentContainer(name: name)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -50,6 +50,7 @@ open class SimpleCoreData {
         let context = container.viewContext
         if context.hasChanges {
             do {
+                print("Saving.")
                 try context.save()
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
@@ -57,25 +58,26 @@ open class SimpleCoreData {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
+        } else {
+            print("No changes detected.")
         }
     }
 }
 
-// simplified method
+// simplified methods
 @available(iOS 10.0, *)
 extension SimpleCoreData {
 
-    open class func delete(entity: NSManagedObject) throws -> Bool {
+    open class func delete(entity: NSManagedObject) throws {
         guard let container = persistentContainer else {
             throw SimpleCoreDataError.undefinedContainer
         }
         do {
+            print("Deleting ...")
             container.viewContext.delete(entity)
-            try container.viewContext.save()
-            return entity.isDeleted && entity.hasPersistentChangedValues
+            try saveContext()
         } catch {
             print("In SimpleCoreData:delete() : \(error)")
-            return false
         }
     }
 
@@ -91,8 +93,9 @@ extension SimpleCoreData {
             throw SimpleCoreDataError.undefinedContainer
         }
         do {
+            print("Saving ...")
             let entity = entityDescr.init(context: container.viewContext)
-            try container.viewContext.save()
+            try saveContext()
             return entity
         } catch {
             print("In SimpleCoreData:create() : \(error)")
