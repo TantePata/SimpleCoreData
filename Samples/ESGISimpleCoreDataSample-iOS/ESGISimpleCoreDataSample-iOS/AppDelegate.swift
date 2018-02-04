@@ -2,12 +2,14 @@
 //  AppDelegate.swift
 //  ESGISimpleCoreDataSample-iOS
 //
-//  Created by Benoit BRIATTE on 23/12/2016.
-//  Copyright © 2016 Digipolitan. All rights reserved.
+//  Created by Caroline Chaudey on 02/01/2018.
+//  Copyright © 2018 LittlePoneyInc. All rights reserved.
 //
 
 import UIKit
+import ESGISimpleCoreData
 
+@available(iOS 10.0, *)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = UINavigationController(rootViewController: ViewController())
         self.window = window
+        SimpleCoreData.loadContainer(name: "ESGISimpleCoreDataSample")
         window.makeKeyAndVisible()
         return true
     }
@@ -43,5 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // Saves changes in the application's managed object context before the application terminates.
     }
 }
