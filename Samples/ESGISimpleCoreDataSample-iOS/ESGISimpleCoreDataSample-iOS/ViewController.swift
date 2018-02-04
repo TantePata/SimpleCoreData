@@ -20,6 +20,17 @@ class ViewController: UIViewController {
             var customers = verifyCustomers()
             print(customers as Any)
 
+            print("MODIFICATION")
+            guard let castedCustomer = customer as? Customer else {
+                print("Cast error.")
+                throw NSError()
+            }
+            castedCustomer.name = "Derp"
+            castedCustomer.vip = false
+            try SimpleCoreData.saveContext()
+            customers = verifyCustomers()
+            print(customers as Any)
+
             print("DELETION")
             try SimpleCoreData.delete(entity: customer!)
             customers = verifyCustomers()
