@@ -15,17 +15,28 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
+            print("CREATION")
             let customer = try SimpleCoreData.create(entityDescr: Customer.self)
-            var customers = try SimpleCoreData.getAll(entityClass: Customer.self)
+            var customers = verifyCustomers()
             print(customers as Any)
-            try SimpleCoreData.delete(entity: customer!)
 
-            customers = try SimpleCoreData.getAll(entityClass: Customer.self)
+            print("DELETION")
+            try SimpleCoreData.delete(entity: customer!)
+            customers = verifyCustomers()
             print(customers as Any)
 
             print("OK")
         } catch {
             print("\(error)")
+        }
+    }
+
+    private func verifyCustomers() -> [Customer]? {
+        do {
+            return try SimpleCoreData.getAll(entityClass: Customer.self) as? [Customer]
+        } catch {
+            print("\(error)")
+            return nil
         }
     }
 }
